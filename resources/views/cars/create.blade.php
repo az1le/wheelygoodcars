@@ -8,11 +8,13 @@
             <label for="license_plate">Kenteken</label>
             <input type="text" name="license_plate" class="form-control" id="license_plate_step1" placeholder="Kenteken invoeren" oninput="fetchCarInfo(this.value)" required>
         </div>
+
         <button type="button" onclick="nextStep(2)" class="btn btn-primary mt-4">Volgende</button>
     </div>
 
     <div id="step-2" class="form-step" style="display: none;">
         <h2>Nieuw aanbod</h2>
+        
         <div class="form-group mt-4">
             <label for="license_plate">Kenteken</label>
             <input type="text" name="license_plate" class="form-control" id="license_plate_step2" value="{{ isset($carData[0]['kenteken']) ? $carData[0]['kenteken'] : '' }}" required>
@@ -80,20 +82,42 @@
         document.getElementById(`step-${step}`).style.display = 'block';
     }
 
-    function fetchCarInfo(licensePlate) {
-        fetch(`https://opendata.rdw.nl/resource/m9d7-ebf2.json?kenteken=${licensePlate}`)
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('license_plate_step2').value = data[0].kenteken;
-                document.getElementById('brand').value = data[0].merk;
-                document.getElementById('model').value = data[0].handelsbenaming;
-                document.getElementById('seats').value = data[0].aantal_zitplaatsen;
-                document.getElementById('doors').value = data[0].aantal_deuren;
-                document.getElementById('weight').value = data[0].massa_rijklaar;
-                document.getElementById('production_year').value = data[0].datum_eerste_toelating.substring(0, 4);
-                document.getElementById('color').value = data[0].eerste_kleur;
-            })
-            .catch(error => console.error('Error fetching car information:', error));
+    async function fetchCarInfo(licensePlate) {
+        try {
+            const response = await fetch(`https://opendata.rdw.nl/resource/m9d7-ebf2.json?kenteken=${licensePlate}`);
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch car information');
+            }
+
+            const [carData] = await response.json();
+
+            populateForm(carData);
+        } catch (error) {
+            console.error('Error fetching car information:', error);
+        }
+    }
+
+    function populateForm(carData) {
+        const {
+            kenteken,
+            merk,
+            handelsbenaming,
+            aantal_zitplaatsen,
+            aantal_deuren,
+            massa_rijklaar,
+            datum_eerste_toelating,
+            eerste_kleur
+        } = carData || {};
+
+        document.getElementById('license_plate_step2').value = kenteken || '';
+        document.getElementById('brand').value = merk || '';
+        document.getElementById('model').value = handelsbenaming || '';
+        document.getElementById('seats').value = aantal_zitplaatsen || '';
+        document.getElementById('doors').value = aantal_deuren || '';
+        document.getElementById('weight').value = massa_rijklaar || '';
+        document.getElementById('production_year').value = datum_eerste_toelating ? datum_eerste_toelating.substring(0, 4) : '';
+        document.getElementById('color').value = eerste_kleur || '';
     }
 </script>
 @endsection

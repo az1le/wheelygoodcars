@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="fullheight">
         <div class="card p-4" style="min-width: 50%;">
             <div class="card-body">
@@ -26,5 +25,4 @@
             </div>
         </div>
     </div>
-
 @endsection

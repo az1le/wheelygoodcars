@@ -15,7 +15,6 @@ $gray:		hsl(28, 10%, 97%);
 $font-family-sans-serif: 'Open Sans', sans-serif;
 
 .fullheight{
-    min-height: calc(100vh - 56px) !important;
     display: flex;
     justify-content: center;
     align-items: center;

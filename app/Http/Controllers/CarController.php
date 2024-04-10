@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
 
 class CarController extends Controller
 {
@@ -14,7 +14,6 @@ class CarController extends Controller
     public function index()
     {
         $cars = Car::all();
-
         return view('cars.index', compact('cars'));
     }
 
@@ -31,15 +30,27 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        $user = auth()->user();
+        $request->validate([
+            'license_plate' => 'required|string',
+            'brand' => 'required|string',
+            'model' => 'required|string',
+            'price' => 'required|numeric',
+            'mileage' => 'required|integer',
+            'seats' => 'nullable|integer',
+            'doors' => 'nullable|integer',
+            'production_year' => 'nullable|integer',
+            'weight' => 'nullable|integer',
+            'color' => 'nullable|string',
+            'image' => 'nullable|string',
+        ]);
 
-        $carData = $request->all();
-        $carData['user_id'] = $user->id;
+        $user_id = Auth::user()->id;
+        $requestData = $request->all();
+        $requestData['user_id'] = $user_id;
 
-        $car = Car::create($carData);
+        Car::create($requestData);
 
-        return redirect()->route('cars.dashboard')->with('success');
+        return redirect()->route('cars.dashboard')->with('success', 'Car created succesfully.');
     }
 
 
@@ -70,18 +81,15 @@ class CarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Car $car)
     {
-        Car::destroy($id);
-
-        return back();
+        $car->delete();
+        return back()->with('success', 'Car deleted successfully');
     }
 
-    public function dashboard(Car $car)
+    public function dashboard()
     {
-        $user = auth()->user();
-        $cars = Car::where('user_id', $user->id)->get();
-
+        $cars = Auth::user()->cars;
         return view('cars.dashboard', compact('cars'));
     }
 }

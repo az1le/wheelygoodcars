@@ -18,5 +18,4 @@
             @endforeach
         </table>
     @endif
-
 @endsection
