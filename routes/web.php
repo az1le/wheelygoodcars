@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,10 @@ Route::get('/', function () {
 })->name('home');
 
 Route::middleware('auth')->group(function () {
-    //
+    Route::resource('cars', CarController::class)->except('index');
+    Route::get('dashboard', [CarController::class, 'dashboard'])->name('cars.dashboard');
 });
+
+Route::get('cars', [CarController::class, 'index'])->name('cars.index');
 
 require __DIR__.'/auth.php';

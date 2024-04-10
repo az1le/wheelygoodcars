@@ -15,10 +15,10 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link text-light" href="">Alle auto's</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="{{ route('cars.index') }}">Alle auto's</a></li>
                             @auth
-                                <li class="nav-item"><a class="nav-link text-light" href="">Mijn aanbod</a></li>
-                                <li class="nav-item"><a class="nav-link text-light" href="">Aanbod plaatsen</a></li>
+                                <li class="nav-item"><a class="nav-link text-light" href="{{ route('cars.dashboard') }}">Mijn aanbod</a></li>
+                                <li class="nav-item"><a class="nav-link text-light" href="{{ route('cars.create') }}">Aanbod plaatsen</a></li>
                             @endauth
                         </li>
                     </ul>
@@ -35,7 +35,7 @@
             </div>
         </nav>
 
-        <div class="container">
+        <div class="container my-5">
             @yield('content')
         </div>
     </body>
