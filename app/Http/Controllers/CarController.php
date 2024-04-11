@@ -53,13 +53,12 @@ class CarController extends Controller
         return redirect()->route('cars.dashboard')->with('success', 'Car created succesfully.');
     }
 
-
     /**
      * Display the specified resource.
      */
     public function show(Car $car)
     {
-        //
+        return view('cars.show', compact('car'));
     }
 
     /**

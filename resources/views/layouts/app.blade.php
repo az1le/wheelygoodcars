@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>WheelyGoodCars</title>
         @vite(['resources/css/app.scss', 'resources/js/app.js'])
+        <script src="https://kit.fontawesome.com/379238eb36.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-md navbar-dark d-print-none bg-black">

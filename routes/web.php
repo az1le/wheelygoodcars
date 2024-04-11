@@ -19,10 +19,11 @@ Route::get('/', function () {
 })->name('home');
 
 Route::middleware('auth')->group(function () {
-    Route::resource('cars', CarController::class)->except('index');
+    Route::resource('cars', CarController::class)->except(['index', 'show']);
     Route::get('dashboard', [CarController::class, 'dashboard'])->name('cars.dashboard');
 });
 
 Route::get('cars', [CarController::class, 'index'])->name('cars.index');
+Route::get('cars/{car}', [CarController::class, 'show'])->name('cars.show');
 
 require __DIR__.'/auth.php';
