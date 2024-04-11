@@ -6,7 +6,7 @@
         <h5 class="mb-0">Detailpagina</h5>
     </div>
     <div class="card-body">
-        <dl class="row">
+        <dl class="row mb-0">
             <dt class="col-sm-5">Kenteken:</dt>
             <dd class="col-sm-7">{{ $car->license_plate }}</dd>
 
