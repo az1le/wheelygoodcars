@@ -8,28 +8,28 @@
     <div class="card-body">
         <dl class="row">
             <dt class="col-sm-5">Kenteken:</dt>
-            <dd class="col-sm-7">{{ $car->license_plate ?? '' }}</dd>
+            <dd class="col-sm-7">{{ $car->license_plate }}</dd>
 
             <dt class="col-sm-5">Merk:</dt>
-            <dd class="col-sm-7">{{ $car->brand ?? '' }}</dd>
+            <dd class="col-sm-7">{{ $car->brand }}</dd>
 
             <dt class="col-sm-5">Model:</dt>
-            <dd class="col-sm-7">{{ $car->model ?? '' }}</dd>
+            <dd class="col-sm-7">{{ $car->model }}</dd>
 
             <dt class="col-sm-5">Zitplaatsen:</dt>
-            <dd class="col-sm-7">{{ $car->seats ?? '' }}</dd>
+            <dd class="col-sm-7">{{ $car->seats ?? '-' }}</dd>
 
             <dt class="col-sm-5">Aantal deuren:</dt>
-            <dd class="col-sm-7">{{ $car->doors ?? '' }}</dd>
+            <dd class="col-sm-7">{{ $car->doors ?? '-' }}</dd>
 
             <dt class="col-sm-5">Massa rijklaar:</dt>
-            <dd class="col-sm-7">{{ $car->weight ?? '' }}</dd>
+            <dd class="col-sm-7">{{ $car->weight ?? '-' }}</dd>
 
             <dt class="col-sm-5">Jaar van productie:</dt>
-            <dd class="col-sm-7">{{ $car->production_year ?? '' }}</dd>
+            <dd class="col-sm-7">{{ $car->production_year ?? '-' }}</dd>
 
             <dt class="col-sm-5">Kleur:</dt>
-            <dd class="col-sm-7">{{ $car->color ?? '' }}</dd>
+            <dd class="col-sm-7">{{ $car->color ?? '-' }}</dd>
 
             <dt class="col-sm-5">Kilometerstand:</dt>
             <dd class="col-sm-7">{{ number_format($car->mileage, 0, ',', '.') ?? '' }}</dd>
