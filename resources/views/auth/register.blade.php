@@ -11,12 +11,12 @@
                     <div class="mb-3 row">
                         <label for="name" class="col-form-label col-sm-4">Naam:</label>
                         <div class="col-sm-8">
-                        <input type="text" name="name" class="form-control" id="name"></div>
+                        <input type="text" name="name" class="form-control" id="name" value="{{ old('name') }}"></div>
                     </div>
                     <div class="mb-3 row">
                         <label for="email" class="col-form-label col-sm-4">E-mailadres:</label>
                         <div class="col-sm-8">
-                        <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com"></div>
+                        <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com" value="{{ old('email') }}"></div>
                     </div>
                     <div class="mb-3 row">
                         <label for="password" class="col-form-label col-sm-4">Wachtwoord:</label>
@@ -27,6 +27,11 @@
                         <label for="password_confirmation" class="col-form-label col-sm-4">Wachtwoord (bevestigen):</label>
                         <div class="col-sm-8">
                         <input type="password" name="password_confirmation" class="form-control" id="password_confirmation"></div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="phone_number" class="col-form-label col-sm-4">Telefoonnummer:</label>
+                        <div class="col-sm-8">
+                        <input type="tel" name="phone_number" class="form-control" id="phone_number" value="{{ old('phone_number') }}"></div>
                     </div>
                     <div class="mb-3">
                         <input type="submit" class="btn btn-primary text-dark" value="Registreren">

@@ -6,75 +6,84 @@
     <div id="step-1" class="form-step col-12 col-sm-6 mx-auto">
         <h2>Nieuw aanbod</h2>
 
-        <div class="form-group mt-4">
-            <label for="license_plate">Kenteken</label>
-            <input type="text" name="license_plate" class="form-control shadow-sm" id="license_plate_step1" placeholder="Kenteken invoeren" oninput="fetchCarInfo(this.value)" required>
+        <div class="input-group border-black mt-4 border border-black rounded shadow-lg">
+            <div class="input-group-text text-white border border-black shadow-sm" style="background-color: #1a41fe">NL</div>
+            <input type="text" name="license_plate" class="form-control form-control-lg text-center fw-bold border border-black shadow-sm" id="license_plate_step1" placeholder="AA-BB-12" oninput="fetchCarInfo(this.value)" style="background-color: #e5be01" required>
+            <button type="button" onclick="nextStep(2)" class="btn btn-dark border border-black shadow-sm">Volgende</button>
         </div>
-
-        <button type="button" onclick="nextStep(2)" class="btn btn-primary shadow-sm mt-4">Volgende</button>
     </div>
 
-    <div id="step-2" class="form-step col-12 col-sm-6 mx-auto" style="display: none;">
-        <h2>Nieuw aanbod</h2>
+    <div id="step-2" class="form-step" style="display: none;">
+        <div class="row rounded shadow-lg">
+            <div class="col-4 bg-primary rounded-start"></div>
+            <div class="col-8 p-5">
+                <div class="d-flex justify-content-between">
+                    <h2 class="mb-0">Nieuw aanbod</h2>
+                    <a href="{{ route('cars.create') }}" class="btn btn-primary text-white shadow-sm"><i class="fas fa-arrow-left"></i> Terug</a>
+                </div>
 
-        <div class="form-group mt-4">
-            <label for="license_plate">Kenteken</label>
-            <input type="text" name="license_plate" class="form-control shadow-sm" id="license_plate_step2" value="{{ isset($carData[0]['kenteken']) ? $carData[0]['kenteken'] : '' }}" required>
-        </div>
+                <div class="form-group mt-4">
+                    <label for="license_plate">Kenteken</label>
+                    <input type="text" name="license_plate" class="form-control shadow-sm" id="license_plate_step2" value="{{ isset($carData[0]['kenteken']) ? $carData[0]['kenteken'] : '' }}" required>
+                </div>
 
-        <div class="form-group mt-4">
-            <label for="brand">Merk</label>
-            <input type="text" name="brand" class="form-control shadow-sm" id="brand" value="{{ isset($carData[0]['merk']) ? $carData[0]['merk'] : '' }}" required>
-        </div>
+                <div class="form-group mt-4">
+                    <label for="brand">Merk</label>
+                    <input type="text" name="brand" class="form-control shadow-sm" id="brand" value="{{ isset($carData[0]['merk']) ? $carData[0]['merk'] : '' }}" required>
+                </div>
 
-        <div class="form-group mt-4">
-            <label for="model">Model</label>
-            <input type="text" name="model" class="form-control shadow-sm" id="model" value="{{ isset($carData[0]['handelsbenaming']) ? $carData[0]['handelsbenaming'] : '' }}" required>
-        </div>
+                <div class="form-group mt-4">
+                    <label for="model">Model</label>
+                    <input type="text" name="model" class="form-control shadow-sm" id="model" value="{{ isset($carData[0]['handelsbenaming']) ? $carData[0]['handelsbenaming'] : '' }}" required>
+                </div>
 
-        <div class="row mt-4">
-            <div class="form-group col-md-4">
-                <label for="seats">Zitplaatsen</label>
-                <input type="text" name="seats" class="form-control shadow-sm" id="seats" value="{{ isset($carData[0]['aantal_zitplaatsen']) ? $carData[0]['aantal_zitplaatsen'] : '' }}">
+                <div class="row mt-4">
+                    <div class="form-group col-md-4">
+                        <label for="seats">Zitplaatsen</label>
+                        <input type="text" name="seats" class="form-control shadow-sm" id="seats" value="{{ isset($carData[0]['aantal_zitplaatsen']) ? $carData[0]['aantal_zitplaatsen'] : '' }}">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="doors">Aantal deuren</label>
+                        <input type="text" name="doors" class="form-control shadow-sm" id="doors" value="{{ isset($carData[0]['aantal_deuren']) ? $carData[0]['aantal_deuren'] : '' }}">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="weight">Massa rijklaar</label>
+                        <input type="text" name="weight" class="form-control shadow-sm" id="weight" value="{{ isset($carData[0]['massa_rijklaar']) ? $carData[0]['massa_rijklaar'] : '' }}">
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="form-group col-md-6">
+                        <label for="production_year">Jaar van productie</label>
+                        <input type="number" name="production_year" class="form-control shadow-sm" id="production_year" value="{{ isset($carData[0]['datum_eerste_toelating']) ? $carData[0]['datum_eerste_toelating'] : '' }}">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="color">Kleur</label>
+                        <input type="text" name="color" class="form-control shadow-sm" id="color" value="{{ isset($carData[0]['eerste_kleur']) ? $carData[0]['eerste_kleur'] : '' }}">
+                    </div>
+                </div>
+
+                <div class="form-group mt-4">
+                    <label for="mileage">Kilometerstand</label>
+                    <div class="input-group">
+                        <input type="text" name="mileage" class="form-control shadow-sm" id="mileage" required>
+                        <span class="input-group-text shadow-sm">km</span>
+                    </div>
+                </div>
+
+                <div class="form-group mt-4">
+                    <label for="price">Vraagprijs</label>
+                    <div class="input-group">
+                        <span class="input-group-text shadow-sm">&euro;</span>
+                        <input type="text" name="price" class="form-control shadow-sm" id="price" required>
+                    </div>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success shadow-sm mt-4">Aanbod afronden</button>
+                </div>
             </div>
-            <div class="form-group col-md-4">
-                <label for="doors">Aantal deuren</label>
-                <input type="text" name="doors" class="form-control shadow-sm" id="doors" value="{{ isset($carData[0]['aantal_deuren']) ? $carData[0]['aantal_deuren'] : '' }}">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="weight">Massa rijklaar</label>
-                <input type="text" name="weight" class="form-control shadow-sm" id="weight" value="{{ isset($carData[0]['massa_rijklaar']) ? $carData[0]['massa_rijklaar'] : '' }}">
-            </div>
         </div>
-
-        <div class="row mt-4">
-            <div class="form-group col-md-6">
-                <label for="production_year">Jaar van productie</label>
-                <input type="number" name="production_year" class="form-control shadow-sm" id="production_year" value="{{ isset($carData[0]['datum_eerste_toelating']) ? $carData[0]['datum_eerste_toelating'] : '' }}">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="color">Kleur</label>
-                <input type="text" name="color" class="form-control shadow-sm" id="color" value="{{ isset($carData[0]['eerste_kleur']) ? $carData[0]['eerste_kleur'] : '' }}">
-            </div>
-        </div>
-
-        <div class="form-group mt-4">
-            <label for="mileage">Kilometerstand</label>
-            <div class="input-group mb-3">
-                <input type="text" name="mileage" class="form-control shadow-sm" id="mileage" required>
-                <span class="input-group-text shadow-sm">km</span>
-            </div>
-        </div>
-
-        <div class="form-group mt-4">
-            <label for="price">Vraagprijs</label>
-            <div class="input-group">
-                <span class="input-group-text shadow-sm">&euro;</span>
-                <input type="text" name="price" class="form-control shadow-sm" id="price" required>
-            </div>
-        </div>
-
-        <button type="submit" class="btn btn-primary shadow-sm mt-4">Aanbod afronden</button>
     </div>
 </form>
 
@@ -94,7 +103,9 @@
 
     async function fetchCarInfo(licensePlate) {
         try {
-            const response = await fetch(`https://opendata.rdw.nl/resource/m9d7-ebf2.json?kenteken=${licensePlate}`);
+            const formattedLicensePlate = licensePlate.replace(/-/g, '');
+
+            const response = await fetch(`https://opendata.rdw.nl/resource/m9d7-ebf2.json?kenteken=${formattedLicensePlate}`);
 
             if (!response.ok) {
                 throw new Error('Failed to fetch car information');

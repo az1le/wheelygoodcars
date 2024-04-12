@@ -66,7 +66,7 @@ class CarController extends Controller
      */
     public function edit(Car $car)
     {
-        //
+        return view('cars.edit', compact('car'));
     }
 
     /**
@@ -74,7 +74,12 @@ class CarController extends Controller
      */
     public function update(Request $request, Car $car)
     {
-        //
+        $request->validate([
+            'price' => 'required',
+        ]);
+
+        $car->update($request->all());
+        return redirect()->route('cars.dashboard')->with('success', 'Car updated successfully.');
     }
 
     /**
@@ -83,7 +88,7 @@ class CarController extends Controller
     public function destroy(Car $car)
     {
         $car->delete();
-        return back()->with('success', 'Car deleted successfully');
+        return redirect()->route('cars.dashboard')->with('success', 'Car deleted successfully.');
     }
 
     public function dashboard()

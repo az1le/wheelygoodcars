@@ -8,7 +8,7 @@
         <script src="https://kit.fontawesome.com/379238eb36.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <nav class="navbar navbar-expand-md navbar-dark d-print-none bg-black">
+        <nav class="navbar sticky-top navbar-expand-md navbar-dark d-print-none bg-black">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ route('home') }}"><strong class="text-primary">Wheely</strong> good cars<strong class="text-primary">!</strong></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

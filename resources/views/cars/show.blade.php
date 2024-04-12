@@ -32,10 +32,10 @@
             <dd class="col-sm-7">{{ $car->color ?? '-' }}</dd>
 
             <dt class="col-sm-5">Kilometerstand:</dt>
-            <dd class="col-sm-7">{{ number_format($car->mileage, 0, ',', '.') ?? '' }}</dd>
+            <dd class="col-sm-7">{{ number_format($car->mileage, 0, ',', '.') }}</dd>
 
             <dt class="col-sm-5">Vraagprijs:</dt>
-            <dd class="col-sm-7">&euro;{{ number_format($car->price, 2, ',', '.') ?? '' }}</dd>
+            <dd class="col-sm-7">&euro;{{ number_format($car->price, 2, ',', '.') }}</dd>
         </dl>
     </div>
     <div class="card-footer bg-white text-end">
