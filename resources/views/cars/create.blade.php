@@ -7,8 +7,8 @@
         <h2>Nieuw aanbod</h2>
 
         <div class="input-group border-black mt-4 border border-black rounded shadow-lg">
-            <div class="input-group-text text-white border border-black shadow-sm" style="background-color: #1a41fe">NL</div>
-            <input type="text" name="license_plate" class="form-control form-control-lg text-center fw-bold border border-black shadow-sm" id="license_plate_step1" placeholder="AA-BB-12" oninput="fetchCarInfo(this.value)" style="background-color: #e5be01" required>
+            <div class="input-group-text text-white border border-black shadow-sm" style="background-color: blue">NL</div>
+            <input type="text" name="license_plate" class="form-control form-control-lg bg-warning text-center fw-bold border border-black shadow-sm" id="license_plate_step1" placeholder="AA-BB-12" oninput="fetchCarInfo(this.value)" required>
             <button type="button" onclick="nextStep(2)" class="btn btn-dark border border-black shadow-sm">Volgende</button>
         </div>
     </div>

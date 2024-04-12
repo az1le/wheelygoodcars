@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>WheelyGoodCars</title>
         @vite(['resources/css/app.scss', 'resources/js/app.js'])
+        @livewireStyles
         <script src="https://kit.fontawesome.com/379238eb36.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -39,5 +40,7 @@
         <div class="container my-5">
             @yield('content')
         </div>
+
+        @livewireScripts
     </body>
 </html>
