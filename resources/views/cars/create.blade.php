@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<form method="POST" action="{{ route('cars.store') }}" id="multistep-form">
+<form method="POST" action="{{ route('cars.store') }}" id="multistep-form" enctype="multipart/form-data">
     @csrf
     <div id="step-1" class="form-step col-12 col-sm-6 mx-auto">
         <h2>Nieuw aanbod</h2>
@@ -23,48 +23,48 @@
                 </div>
 
                 <div class="form-group mt-4">
-                    <label for="license_plate">Kenteken</label>
+                    <label for="license_plate" class="form-label">Kenteken</label>
                     <input type="text" name="license_plate" class="form-control shadow-sm" id="license_plate_step2" value="{{ isset($carData[0]['kenteken']) ? $carData[0]['kenteken'] : '' }}" required>
                 </div>
 
                 <div class="form-group mt-4">
-                    <label for="brand">Merk</label>
+                    <label for="brand" class="form-label">Merk</label>
                     <input type="text" name="brand" class="form-control shadow-sm" id="brand" value="{{ isset($carData[0]['merk']) ? $carData[0]['merk'] : '' }}" required>
                 </div>
 
                 <div class="form-group mt-4">
-                    <label for="model">Model</label>
+                    <label for="model" class="form-label">Model</label>
                     <input type="text" name="model" class="form-control shadow-sm" id="model" value="{{ isset($carData[0]['handelsbenaming']) ? $carData[0]['handelsbenaming'] : '' }}" required>
                 </div>
 
                 <div class="row mt-4">
                     <div class="form-group col-md-4">
-                        <label for="seats">Zitplaatsen</label>
+                        <label for="seats" class="form-label">Zitplaatsen</label>
                         <input type="text" name="seats" class="form-control shadow-sm" id="seats" value="{{ isset($carData[0]['aantal_zitplaatsen']) ? $carData[0]['aantal_zitplaatsen'] : '' }}">
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="doors">Aantal deuren</label>
+                        <label for="doors" class="form-label">Aantal deuren</label>
                         <input type="text" name="doors" class="form-control shadow-sm" id="doors" value="{{ isset($carData[0]['aantal_deuren']) ? $carData[0]['aantal_deuren'] : '' }}">
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="weight">Massa rijklaar</label>
+                        <label for="weight" class="form-label">Massa rijklaar</label>
                         <input type="text" name="weight" class="form-control shadow-sm" id="weight" value="{{ isset($carData[0]['massa_rijklaar']) ? $carData[0]['massa_rijklaar'] : '' }}">
                     </div>
                 </div>
 
                 <div class="row mt-4">
                     <div class="form-group col-md-6">
-                        <label for="production_year">Jaar van productie</label>
+                        <label for="production_year" class="form-label">Jaar van productie</label>
                         <input type="number" name="production_year" class="form-control shadow-sm" id="production_year" value="{{ isset($carData[0]['datum_eerste_toelating']) ? $carData[0]['datum_eerste_toelating'] : '' }}">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="color">Kleur</label>
+                        <label for="color" class="form-label">Kleur</label>
                         <input type="text" name="color" class="form-control shadow-sm" id="color" value="{{ isset($carData[0]['eerste_kleur']) ? $carData[0]['eerste_kleur'] : '' }}">
                     </div>
                 </div>
 
                 <div class="form-group mt-4">
-                    <label for="mileage">Kilometerstand</label>
+                    <label for="mileage" class="form-label">Kilometerstand</label>
                     <div class="input-group">
                         <input type="text" name="mileage" class="form-control shadow-sm" id="mileage" required>
                         <span class="input-group-text shadow-sm">km</span>
@@ -72,11 +72,16 @@
                 </div>
 
                 <div class="form-group mt-4">
-                    <label for="price">Vraagprijs</label>
+                    <label for="price" class="form-label">Vraagprijs</label>
                     <div class="input-group">
                         <span class="input-group-text shadow-sm">&euro;</span>
                         <input type="text" name="price" class="form-control shadow-sm" id="price" required>
                     </div>
+                </div>
+
+                <div class="form-group mt-4">
+                    <label for="image" class="form-label">Afbeelding</label>
+                    <input class="form-control shadow-sm" type="file" name="image" id="image">
                 </div>
 
                 <div class="d-grid">

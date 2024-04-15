@@ -41,12 +41,17 @@ class CarController extends Controller
             'production_year' => 'nullable|integer',
             'weight' => 'nullable|integer',
             'color' => 'nullable|string',
-            'image' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
         ]);
 
         $user_id = Auth::user()->id;
         $requestData = $request->all();
         $requestData['user_id'] = $user_id;
+
+        if ($request->hasFile('image')){
+            $image = $request->file('image')->store('public');
+            $requestData['image'] = $image;
+        }
 
         Car::create($requestData);
 

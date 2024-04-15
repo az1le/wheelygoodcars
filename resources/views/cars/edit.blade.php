@@ -14,48 +14,48 @@
                 @method('PUT')
 
                 <div class="form-group mt-4">
-                    <label for="license_plate">Kenteken</label>
+                    <label for="license_plate" class="form-label">Kenteken</label>
                     <input type="text" id="license_plate" class="form-control shadow-sm" value="{{ $car->license_plate }}" disabled>
                 </div>
 
                 <div class="form-group mt-4">
-                    <label for="brand">Merk</label>
+                    <label for="brand" class="form-label">Merk</label>
                     <input type="text" id="brand" class="form-control shadow-sm" value="{{ $car->brand }}" disabled>
                 </div>
 
                 <div class="form-group mt-4">
-                    <label for="model">Model</label>
+                    <label for="model" class="form-label">Model</label>
                     <input type="text" id="model" class="form-control shadow-sm" value="{{ $car->model }}" disabled>
                 </div>
 
                 <div class="row mt-4">
                     <div class="form-group col-md-4">
-                        <label for="seats">Zitplaatsen</label>
+                        <label for="seats" class="form-label">Zitplaatsen</label>
                         <input type="text" id="seats" class="form-control shadow-sm" value="{{ $car->seats ?? '-' }}" disabled>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="doors">Aantal deuren</label>
+                        <label for="doors" class="form-label">Aantal deuren</label>
                         <input type="text" id="doors" class="form-control shadow-sm" value="{{ $car->doors ?? '-' }}" disabled>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="weight">Massa rijklaar</label>
+                        <label for="weight" class="form-label">Massa rijklaar</label>
                         <input type="text" id="weight" class="form-control shadow-sm" value="{{ $car->weight ?? '-' }}" disabled>
                     </div>
                 </div>
 
                 <div class="row mt-4">
                     <div class="form-group col-md-6">
-                        <label for="production_year">Jaar van productie</label>
+                        <label for="production_year" class="form-label">Jaar van productie</label>
                         <input type="text" id="production_year" class="form-control shadow-sm" value="{{ $car->production_year ?? '-' }}" disabled>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="color">Kleur</label>
+                        <label for="color" class="form-label">Kleur</label>
                         <input type="text" id="color" class="form-control shadow-sm" value="{{ $car->color ?? '-' }}" disabled>
                     </div>
                 </div>
 
                 <div class="form-group mt-4">
-                    <label for="mileage">Kilometerstand</label>
+                    <label for="mileage" class="form-label">Kilometerstand</label>
                     <div class="input-group">
                         <input type="text" id="mileage" class="form-control shadow-sm" value="{{ number_format($car->mileage, 0, ',', '.') }}" disabled>
                         <span class="input-group-text shadow-sm">km</span>
@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="form-group mt-4">
-                    <label for="price">Vraagprijs</label>
+                    <label for="price" class="form-label">Vraagprijs</label>
                     <div class="input-group">
                         <span class="input-group-text shadow-sm">&euro;</span>
                         <input type="text" id="price" class="form-control shadow-sm" name="price" value="{{ number_format($car->price, 2, ',', '.') }}">

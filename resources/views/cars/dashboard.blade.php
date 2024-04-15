@@ -11,13 +11,20 @@
                 <tbody>
                     @foreach ($cars as $car)
                         <tr class="align-middle">
+                            @if ($car->image != '')
+                                <td>
+                                    <img src="{{ Storage::url($car->image) }}" class="img-fluid img-thumbnail" height="100" width="100" alt="Auto">
+                                </td>
+                            @else
+                                <td></td>
+                            @endif
                             <td>
-                                <div class="row">
-                                    <div class="col">{{ $car->license_plate }}</div>
+                                <div>
+                                    {{ $car->license_plate }}
                                 </div>
-                                <div class="row">
-                                    <div class="col"><span class="badge text-bg-success">Te koop</span></div>
-                                    {{-- <div class="col"><span class="badge text-bg-warning">Verkocht</span></div> --}}
+                                <div>
+                                    <span class="badge text-bg-success">Te koop</span>
+                                    {{-- <div><span class="badge text-bg-warning">Verkocht</span></div> --}}
                                 </div>
                             </td>
                             <td>&euro;{{ number_format($car->price, 2, ',', '.') }}</td>
