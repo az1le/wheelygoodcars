@@ -81,7 +81,7 @@
 
                 <div class="form-group mt-4">
                     <label for="image" class="form-label">Afbeelding</label>
-                    <input class="form-control shadow-sm" type="file" name="image" id="image">
+                    <input type="file" name="image"  class="form-control shadow-sm" id="image">
                 </div>
 
                 <div class="d-grid">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 
 class CarController extends Controller
@@ -100,5 +101,15 @@ class CarController extends Controller
     {
         $cars = Auth::user()->cars;
         return view('cars.dashboard', compact('cars'));
+    }
+
+    public function export(Car $car){
+        $data = [
+            'title' => 'Te koop',
+            'car' => $car,
+        ];
+        
+        $pdf = Pdf::loadView('cars.export', $data);
+        return $pdf->stream();
     }
 }

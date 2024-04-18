@@ -71,7 +71,10 @@
                 </div>
 
                 <div class="d-flex justify-content-between mt-4">
-                    <button type="submit" class="btn btn-success shadow-sm">Opslaan</button>
+                    <div>
+                        <button type="submit" class="btn btn-success shadow-sm">Opslaan</button>
+                        <a href="{{ route('cars.export', $car) }}" class="btn btn-success shadow-sm" role="button" target="_blank"><i class="fa-solid fa-file-export"></i></a>
+                    </div>
                     <button type="button" onclick="confirmDelete()" class="btn btn-danger shadow-sm"><i class="fas fa-trash"></i></button>
                 </div>
             </form>

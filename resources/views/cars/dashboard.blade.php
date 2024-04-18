@@ -11,23 +11,23 @@
                 <tbody>
                     @foreach ($cars as $car)
                         <tr class="align-middle">
-                            @if ($car->image != '')
-                                <td>
-                                    <img src="{{ Storage::url($car->image) }}" class="img-fluid img-thumbnail" height="100" width="100" alt="Auto">
-                                </td>
-                            @else
-                                <td></td>
-                            @endif
-                            <td>
+                            <td class="col-2">
+                                @if ($car->image != '')
+                                    <img src="{{ Storage::url($car->image) }}" class="img-fluid img-thumbnail" alt="Auto">
+                                @else
+                                    <img src="https://placehold.co/200x100?text=Geen+afbeelding" class="img-fluid img-thumbnail" alt="Placeholder">
+                                @endif
+                            </td>
+                            <td class="col-1 text-center">
                                 <div>
-                                    {{ $car->license_plate }}
+                                    <h5>{{ $car->license_plate }}</h5>
                                 </div>
                                 <div>
                                     <span class="badge text-bg-success">Te koop</span>
                                     {{-- <div><span class="badge text-bg-warning">Verkocht</span></div> --}}
                                 </div>
                             </td>
-                            <td>&euro;{{ number_format($car->price, 2, ',', '.') }}</td>
+                            <td class="text-center">&euro;{{ number_format($car->price, 2, ',', '.') }}</td>
                             <td>{{ $car->brand }} {{ $car->model }} {{ $car->production_year }}</td>
                             <td class="text-end"><a href="{{ route('cars.edit', $car) }}"><i class="fa-solid fa-pen"></i></a></td>
                         </tr>

@@ -21,6 +21,7 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::resource('cars', CarController::class)->except(['index', 'show']);
     Route::get('dashboard', [CarController::class, 'dashboard'])->name('cars.dashboard');
+    Route::get('/cars/{car}/export', [CarController::class, 'export'])->name('cars.export');
 });
 
 Route::get('cars', [CarController::class, 'index'])->name('cars.index');
